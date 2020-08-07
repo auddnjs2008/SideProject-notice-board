@@ -1,10 +1,10 @@
 doctype html
 html
     head
-       
-        script(src="https://kit.fontawesome.com/0f0e16d051.js", crossorigin="anonymous", script-src-elem)
-        title WeBoard
+        script(src="https://kit.fontawesome.com/0f0e16d051.js", crossorigin="anonymous")
+        title  #{pageTitle} | #{siteName}
     body
+        include ../partials/header
         main
             block content
         include ../partials/footer 

@@ -1,4 +1,13 @@
 extends layouts/main.pug
+include mixins/postBlock
+
 
 block content
-    p Hello  This is Home
+    .home-post
+        each post in postes
+            +postBlock({
+                name:post.name,
+                title:post.title,
+                description:post.description,
+                id:post.id
+            })

@@ -1,4 +1,14 @@
 extends layouts/main.pug
+include mixins/postBlock
+
 
 block content
-    p search
+    .search__header
+        h3  Searching by #{searchingBy}
+    .search__postes
+         each post in postes
+            +postBlock({
+                name:post.name,
+                title:post.title,
+                description:post.description
+            })    

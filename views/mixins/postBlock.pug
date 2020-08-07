@@ -1,0 +1,7 @@
+mixin postBlock(post = {})
+    .postBlock
+        a(href=routes.postDetail(post.id))
+            .postWrapper
+                .postWrapper__name=post.name
+                .postWrapper__title=post.title
+                .postWrapper__script=post.description

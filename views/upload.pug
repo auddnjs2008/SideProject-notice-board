@@ -1,4 +1,8 @@
 extends layouts/main.pug
 
 block content
-    p upload
+    .form-container
+        form(action=`/board/${routes.upload}`, method="post")
+            input(type="text", placeholder="title",name="title")
+            textarea(name="description", placeholder="Description")
+            input(type="submit", value="upload")

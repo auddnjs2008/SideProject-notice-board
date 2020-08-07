@@ -1,4 +1,10 @@
 extends layouts/main.pug
 
 block content
-    p editProfiel
+    .form-container
+        form(action=routes.editProfile, methond="post")
+            label(for="avatar") Avatar
+            input(type="file",id="avatar",name="avatar")
+            input(type="text",placeholder="name", name="name")           
+            input(type="submit",value="Edit Profile")
+    a.form-container__link(href=`/users${routes.changePassword}`) Change Password    

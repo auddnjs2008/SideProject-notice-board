@@ -29,13 +29,25 @@ const routes = {
   logout: LOGOUT,
   search: SEARCH,
   users: USERS,
-  userDetail: USER_DETAIL,
+  userDetail: (id) => {
+    if (id) {
+      return `/users/${id}`;
+    } else {
+      return USER_DETAIL;
+    }
+  },
   editProfile: EDIT_PROFILE,
   changePassword: CHANGE_PASSWORD,
   me: ME,
   board: BOARD,
   upload: UPLOAD,
-  postDetail: POSTS_DETAIL,
+  postDetail: (id) => {
+    if (id) {
+      return `/board/${id}`;
+    } else {
+      return POSTS_DETAIL;
+    }
+  },
   editPost: EDIT_POST,
   deletePost: DELETE_POST,
 };

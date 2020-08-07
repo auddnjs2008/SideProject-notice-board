@@ -7,6 +7,7 @@ import userRouter from "./router/userRouter";
 import globalRouter from "./router/globalRouter";
 import boardRouter from "./router/boardRouter";
 import routes from "./routes";
+import { localMiddleware } from "./middleware";
 const app = express();
 
 app.set("view engine", "pug");
@@ -16,6 +17,8 @@ app.use(cookieParser());
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("dev"));
+
+app.use(localMiddleware);
 
 app.use(routes.home, globalRouter);
 app.use(routes.users, userRouter);
