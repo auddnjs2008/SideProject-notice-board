@@ -1,21 +1,37 @@
 import routes from "../routes";
+import Post from "../models/Post";
+import User from "../models/User";
+import passport from "passport";
 
-export const home = (req, res) =>
-  res.render("home", { pageTitle: "Home", postes });
+export const home = async (req, res) => {
+  try {
+    const postes = await Post.find({}).sort({ _id: -1 });
+    res.render("home", { pageTitle: "Home", postes });
+  } catch (error) {
+    console.log(error);
+    res.render("home", { pageTitle: "Home", postes: [] });
+  }
+};
 
 export const getJoin = (req, res) => res.render("join", { pageTitle: "Join" });
 
-export const postJoin = (req, res, next) => {
+export const postJoin = async (req, res, next) => {
   const {
-    body: { name, password, password2 },
+    body: { name, password, password2, email },
   } = req;
 
   if (password !== password2) {
     res.status(400);
     res.render("join", { pageTitle: "Join" });
   } else {
-    //사용자 등록
-    res.redirect(routes.home);
+    try {
+      const user = await User({ name, email });
+      await User.register(user, password);
+      next();
+    } catch (error) {
+      console.log(error);
+      res.redirect(routes.home);
+    }
   }
 };
 
@@ -24,12 +40,21 @@ export const getLogin = (req, res) =>
 
 export const postLogin = (req, res) => {
   const {
-    body: { name, password },
+    body: { email, password },
   } = req;
-  res.redirect(routes.home);
+
+  passport.authenticate("local", {
+    successRedirect: routes.home,
+    failureRedirect: routes.login,
+    successFlash: "Welcome",
+    failureFlash: "Can't login",
+  });
 };
 
-export const logout = (req, res) => res.redirect(routes.home);
+export const logout = (req, res) => {
+  req.logout();
+  res.redirect(routes.home);
+};
 
 export const search = (req, res) => {
   const {

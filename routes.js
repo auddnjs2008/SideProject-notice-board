@@ -48,8 +48,20 @@ const routes = {
       return POSTS_DETAIL;
     }
   },
-  editPost: EDIT_POST,
-  deletePost: DELETE_POST,
+  editPost: (id) => {
+    if (id) {
+      return `/board/${id}/edit`;
+    } else {
+      return EDIT_POST;
+    }
+  },
+  deletePost: (id) => {
+    if (id) {
+      return `/board/${id}/delete`;
+    } else {
+      return DELETE_POST;
+    }
+  },
 };
 
 export default routes;
