@@ -6,7 +6,7 @@ block content
     .search__header
         h3  Searching by #{searchingBy}
     .search__postes
-         each post in postes
+         each post in findPostes
             +postBlock({
                 name:post.name,
                 title:post.title,

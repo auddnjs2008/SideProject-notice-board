@@ -22,6 +22,16 @@ const POSTS_DETAIL = "/:id";
 const EDIT_POST = "/:id/edit";
 const DELETE_POST = "/:id/delete";
 
+//GITHUB
+
+const GITHUB = "/auth/github";
+const GITHUB_CALLBACK = "/auth/github/callback";
+
+//kakao
+
+const KAKAO = "/auth/kakao";
+const KAKAO_CALLBACK = "/auth/kakao/callback";
+
 const routes = {
   home: Home,
   join: JOIN,
@@ -62,6 +72,11 @@ const routes = {
       return DELETE_POST;
     }
   },
+
+  github: GITHUB,
+  githubcallback: GITHUB_CALLBACK,
+  kakao: KAKAO,
+  kakaocallback: KAKAO_CALLBACK,
 };
 
 export default routes;

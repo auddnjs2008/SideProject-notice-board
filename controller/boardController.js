@@ -12,7 +12,7 @@ export const postUpload = async (req, res) => {
   const newPost = await Post.create({
     title,
     description,
-    name: "M.W",
+    name: req.user.name,
   });
   console.log(newPost);
   res.redirect(routes.postDetail(newPost.id));
