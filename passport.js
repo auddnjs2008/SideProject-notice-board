@@ -1,11 +1,11 @@
 import passport from "passport";
 import GithubStrategy from "passport-github";
-import KakaoStrategy from "passport-kakao";
+import NaverStrategy from "passport-naver";
 import User from "./models/User";
 import routes from "./routes";
 import {
   githubLoginCallback,
-  kakaoLoginCallback,
+  naverLoginCallback,
 } from "./controller/globalController";
 
 // strategy 생성
@@ -24,12 +24,14 @@ passport.use(
 );
 
 passport.use(
-  new KakaoStrategy(
+  new NaverStrategy(
     {
-      clientID: process.env.KAKAO_ID,
-      callbackURL: `http://localhost:4000${routes.kakaocallback}`,
+      clientID: process.env.NAVER_ID,
+      clientSecret: process.env.NAVER_SECRET,
+      callbackURL: `http://localhost:4000${routes.navercallback}`,
+      svcType: 0,
     },
-    kakaoLoginCallback
+    naverLoginCallback
   )
 );
 

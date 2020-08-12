@@ -19,8 +19,6 @@ const app = express();
 
 const CokieStore = MongoStore(session);
 
-console.log(process.env.COOKIE_SECRET);
-
 app.set("view engine", "pug");
 
 app.use(helmet());

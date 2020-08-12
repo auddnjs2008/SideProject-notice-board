@@ -10,8 +10,8 @@ import {
   postLogin,
   githubLogin,
   postGithubLogin,
-  kakaoLogin,
-  postKakaoLogin,
+  naverLogin,
+  postNaverLogin,
 } from "../controller/globalController";
 import passport from "passport";
 
@@ -32,12 +32,14 @@ globalRouter.get(
   postGithubLogin
 );
 
-globalRouter.get(routes.kakao, kakaoLogin);
+globalRouter.get(routes.naver, naverLogin);
 
 globalRouter.get(
-  routes.kakaocallback,
-  passport.authenticate("kakao", { failureRedirect: "/login" }),
-  postKakaoLogin
+  routes.navercallback,
+  passport.authenticate("naver", {
+    failureRedirect: "/login",
+  }),
+  postNaverLogin
 );
 
 globalRouter.get(routes.logout, logout);

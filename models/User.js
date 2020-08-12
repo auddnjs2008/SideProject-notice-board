@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
   email: String,
   avatarUrl: String,
   githubId: Number,
-  kakaoId: Number,
+  NaverId: Number,
 });
 
 //passportLocalMongoose 적용함

@@ -27,10 +27,10 @@ const DELETE_POST = "/:id/delete";
 const GITHUB = "/auth/github";
 const GITHUB_CALLBACK = "/auth/github/callback";
 
-//kakao
+//naver
 
-const KAKAO = "/auth/kakao";
-const KAKAO_CALLBACK = "/auth/kakao/callback";
+const NAVER = "/auth/naver";
+const NAVER_CALLBACK = "/auth/naver/callback";
 
 const routes = {
   home: Home,
@@ -75,8 +75,8 @@ const routes = {
 
   github: GITHUB,
   githubcallback: GITHUB_CALLBACK,
-  kakao: KAKAO,
-  kakaocallback: KAKAO_CALLBACK,
+  naver: NAVER,
+  navercallback: NAVER_CALLBACK,
 };
 
 export default routes;
