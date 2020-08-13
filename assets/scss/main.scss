@@ -1,0 +1,42 @@
+html,
+body {
+  font-family: "Kalam", cursive;
+  height: 100vh;
+  margin: 0px;
+}
+main {
+  height: 100%;
+  margin-top: 100px;
+}
+
+* {
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+input {
+  width: 200px;
+  height: 30px;
+}
+
+.footer__eraser {
+  width: 50px;
+  height: 20px;
+
+  background-color: $eraser;
+  position: absolute;
+  top: -70px;
+  right: 15px;
+  .footer__string {
+    width: 10%;
+    height: 100%;
+    margin: 0 auto;
+    background-color: black;
+  }
+}

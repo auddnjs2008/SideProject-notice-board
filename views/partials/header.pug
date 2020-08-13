@@ -1,16 +1,16 @@
 header.header
     .header__column
         a(href=routes.home)
-            <i class="fas fa-plus"></i>
+            <i class="fas fa-chalkboard"></i>
     .header__column        
         form(action=routes.search,method="get")
             input(type="text",name="term", placeholder="Searcy by term...")
     .header__column
         ul
             if !loggedUser
-                li
+                li.join
                     a(href=routes.join) Join
-                li
+                li.user
                     a(href=routes.login) LogIn    
             else
                 li

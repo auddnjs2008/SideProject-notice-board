@@ -22,6 +22,17 @@ const CokieStore = MongoStore(session);
 app.set("view engine", "pug");
 
 app.use(helmet());
+app.use("/static", express.static("static"));
+
+app.use(function (req, res, next) {
+  res.setHeader(
+    "Content-Security-Policy",
+    "script-src 'self' 'unsafe-eval' * "
+  );
+  return next();
+});
+app.use(express.static(__dirname + "/"));
+
 app.use(cookieParser());
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));

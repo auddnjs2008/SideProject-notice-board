@@ -1,11 +1,14 @@
+
 doctype html
 html
     head
-        
-        <script  src="https://kit.fontawesome.com/0f0e16d051.js" crossorigin="anonymous"></script>
         title  #{pageTitle} | #{siteName}
+        script(src="https://kit.fontawesome.com/0f0e16d051.js", crossorigin="anonymous")
+        link(rel="stylesheet",href="/static/styles.css")
+        <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
     body
         include ../partials/header
         main
             block content
         include ../partials/footer 
+        script(src="/static/main.js")   

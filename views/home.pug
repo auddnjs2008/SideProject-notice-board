@@ -4,10 +4,12 @@ include mixins/postBlock
 
 block content
     .home-post
+        .postIndex  
+            .postName 이름
+            .postTitle 제목
         each post in postes
             +postBlock({
                 name:post.name,
-                title:post.title,
-                description:post.description,
+                title:post.title,   
                 id:post.id
             })
