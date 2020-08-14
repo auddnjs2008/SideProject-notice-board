@@ -15,6 +15,7 @@ import {
   postNaverLogin,
 } from "../controller/globalController";
 import passport from "passport";
+import { onlySecret } from "../middleware";
 
 const globalRouter = express.Router();
 
@@ -22,7 +23,7 @@ globalRouter.get(routes.home, home);
 globalRouter.get(routes.join, getJoin);
 globalRouter.post(routes.join, postJoin, postLogin);
 
-globalRouter.get(routes.login, getLogin);
+globalRouter.get(routes.login, onlySecret, getLogin);
 globalRouter.post(routes.login, postLogin);
 
 globalRouter.get(routes.github, githubLogin);
@@ -43,7 +44,7 @@ globalRouter.get(
   postNaverLogin
 );
 
-globalRouter.get(routes.logout, logout);
+globalRouter.get(routes.logout, onlySecret, logout);
 globalRouter.get(routes.search, search);
 
 export default globalRouter;

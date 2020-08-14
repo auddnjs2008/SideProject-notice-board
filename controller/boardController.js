@@ -13,6 +13,7 @@ export const postUpload = async (req, res) => {
     title,
     description,
     name: req.user.name,
+    userId: req.user.id,
   });
   console.log(newPost);
   res.redirect(routes.postDetail(newPost.id));

@@ -3,3 +3,6 @@ extends layouts/main.pug
 block content
     .name=loggedUser.name
     img(src=loggedUser.avatarUrl)
+    if(loggedUser.id === showUser.id)
+        a(href=`/users${routes.editProfile}`)
+            button.editProfile editProfile

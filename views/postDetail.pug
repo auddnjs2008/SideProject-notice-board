@@ -5,7 +5,8 @@ block content
         .post-name=post.name
         .post-title=post.title
         .post-content=post.description
-    a(href=`/board/${post.id}/edit`)
-        button.editPost Edit
-    a(href=`/board/${post.id}/delete`)
-        button.deletePost   Delete
+    if(loggedUser.id===post.userId)    
+        a(href=`/board/${post.id}/edit`)
+            button.editPost Edit
+        a(href=`/board/${post.id}/delete`)
+            button.deletePost   Delete
