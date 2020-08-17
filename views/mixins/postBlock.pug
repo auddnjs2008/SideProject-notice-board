@@ -1,7 +1,7 @@
 mixin postBlock(post = {})
     .postBlock
-        a(href=routes.postDetail(post.id))
-            .postWrapper
-                .postWrapper__name=post.name
-                .postWrapper__title=post.title
-                
+        .postWrapper
+            span.postWrapper__name
+                a(href=routes.postDetail(post.id))=post.name 
+            span.postWrapper__title
+                a(href=routes.postDetail(post.id))=post.title 

@@ -4,9 +4,26 @@ import User from "../models/User";
 import passport from "passport";
 
 export const home = async (req, res) => {
+  const {
+    query: { page },
+  } = req;
+
+  let pageIndex; // 현재페이지를 의미
   try {
+    if (page === undefined || page === 1) {
+      pageIndex = 1;
+    } else {
+      pageIndex = parseInt(page);
+    }
     const postes = await Post.find({}).sort({ _id: -1 });
-    res.render("home", { pageTitle: "Home", postes });
+    const pagesNumber = Math.floor(postes.length / 5);
+    const lastPage = postes.length % 5 ? pagesNumber + 1 : pagesNumber;
+    const showPostes = await Post.find({})
+      .sort({ _id: -1 })
+      .skip((pageIndex - 1) * 5)
+      .limit(5);
+
+    res.render("home", { pageTitle: "Home", showPostes, lastPage, pageIndex });
   } catch (error) {
     console.log(error);
     res.render("home", { pageTitle: "Home", postes: [] });

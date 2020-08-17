@@ -1,6 +1,6 @@
 .home-post {
-  width: 100%;
-  height: 50vh;
+  width: 80%;
+  height: 60vh;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -9,9 +9,9 @@
   border: 10px solid $border;
   display: grid;
   grid-template-columns: 1fr;
-  grid-auto-rows: 100px;
+  grid-template-rows: repeat(6, 1fr);
   justify-content: center;
-  align-content: center;
+  align-content: flex-start;
   padding: 20px;
 
   a {
@@ -27,12 +27,43 @@
 
   .postIndex {
     height: 100%;
-    align-items: flex-end;
+    align-items: flex-start;
     color: $blue;
     font-size: 20px;
     font-weight: 700;
   }
   &:first-child {
     align-self: flex-end;
+  }
+  .postPages {
+    width: 100%;
+    .Pages {
+      padding: 0;
+      width: 100%;
+      position: absolute;
+      bottom: 0px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .page,
+      .nowPage {
+        margin-right: 10px;
+        button {
+          border: none;
+          outline-style: none;
+          font-size: 20px;
+          background-color: $boardColor;
+        }
+      }
+      .nowPage {
+        a {
+          button {
+            font-size: 30px;
+            color: #ea6569;
+            background-color: $boardColor;
+          }
+        }
+      }
+    }
   }
 }

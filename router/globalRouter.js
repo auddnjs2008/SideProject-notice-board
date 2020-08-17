@@ -23,7 +23,7 @@ globalRouter.get(routes.home, home);
 globalRouter.get(routes.join, getJoin);
 globalRouter.post(routes.join, postJoin, postLogin);
 
-globalRouter.get(routes.login, onlySecret, getLogin);
+globalRouter.get(routes.login, getLogin);
 globalRouter.post(routes.login, postLogin);
 
 globalRouter.get(routes.github, githubLogin);

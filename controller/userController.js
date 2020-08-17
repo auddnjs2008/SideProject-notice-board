@@ -22,8 +22,26 @@ export const postEditProfile = async (req, res) => {
   }
 };
 
-export const changePassword = (req, res) =>
+export const getChangePassword = (req, res) =>
   res.render("changePassword", { pageTitle: "change-Password" });
+
+export const postChangePassword = async (req, res) => {
+  const {
+    body: { oldPassword, newPassword, newPassword2 },
+  } = req;
+
+  try {
+    if (newPassword !== newPassword2) {
+      res.status(400);
+      res.redirect(`/users${routes.changePassword}`);
+    }
+    await req.user.changePassword(oldPassword, newPassword);
+    res.redirect(`/users/${routes.editProfile}`);
+  } catch (error) {
+    console.log(error);
+    res.redirect(`/users${routes.changePassword}`);
+  }
+};
 
 export const userDetail = (req, res) => {
   const showUser = req.user;
