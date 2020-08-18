@@ -7,11 +7,13 @@ block content
         .postIndex  
             .postName 이름
             .postTitle 제목
+            .postTime 작성시간
         each post in showPostes
             +postBlock({
                 name:post.name,
                 title:post.title,   
-                id:post.id
+                id:post.id,
+                time:post.time
             })
         .postPages
             ul.Pages
@@ -24,3 +26,4 @@ block content
                         li.page
                             a(href=`${routes.home}?page=${i+1}`)
                                 button=i+1        
+

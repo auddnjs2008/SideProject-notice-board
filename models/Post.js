@@ -10,7 +10,9 @@ const PostSchema = new mongoose.Schema({
     type: String,
     required: "name is required",
   },
+  time: String,
   userId: String,
+  imageUrl: String,
 });
 
 const model = mongoose.model("Post", PostSchema);

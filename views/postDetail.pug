@@ -1,12 +1,19 @@
 extends layouts/main.pug
 
 block content
-    .post-wrapper
-        .post-name=post.name
-        .post-title=post.title
-        .post-content=post.description
-    if(loggedUser && loggedUser.id===post.userId)    
-        a(href=`/board/${post.id}/edit`)
-            button.editPost Edit
-        a(href=`/board/${post.id}/delete`)
-            button.deletePost   Delete
+    .board-container
+        .post-wrapper
+            .post-magnet
+            .post-name=post.name
+            .post-title=post.title
+                if(post.imageUrl)
+                    img(src=post.imageUrl)
+            .post-content=post.description
+            if(loggedUser && loggedUser.id===post.userId)    
+                .button-wrapper
+                    a(href=`/board/${post.id}/edit`)
+                        button.editPost Edit
+                    a(href=`/board/${post.id}/delete`)
+                        button.deletePost   Delete
+        .post-Comments
+            .Comment__header Comments

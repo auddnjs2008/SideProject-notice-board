@@ -8,12 +8,12 @@ import {
   postEditPost,
   deletePost,
 } from "../controller/boardController";
-import { onlySecret } from "../middleware";
+import { onlySecret, uploadPoster } from "../middleware";
 
 const boardRouter = express.Router();
 
 boardRouter.get(routes.upload, onlySecret, getUpload);
-boardRouter.post(routes.upload, postUpload);
+boardRouter.post(routes.upload, uploadPoster, postUpload);
 
 boardRouter.get(routes.editPost(), onlySecret, getEditPost);
 boardRouter.post(routes.editPost(), postEditPost);

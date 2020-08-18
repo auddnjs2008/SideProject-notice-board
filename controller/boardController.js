@@ -7,15 +7,23 @@ export const getUpload = (req, res) =>
 export const postUpload = async (req, res) => {
   const {
     body: { title, description },
+    file,
   } = req;
+  console.log(file.path);
+  const day = new Date();
+  const time = `${day.getFullYear()}-${
+    day.getMonth() + 1
+  }-${day.getDate()}(${day.getHours()}:${day.getMinutes()})`;
 
   const newPost = await Post.create({
     title,
     description,
+    time,
     name: req.user.name,
     userId: req.user.id,
+    imageUrl: file ? file.path : "",
   });
-  console.log(newPost);
+
   res.redirect(routes.postDetail(newPost.id));
 };
 

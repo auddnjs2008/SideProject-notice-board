@@ -2,7 +2,10 @@ extends layouts/main.pug
 
 block content
     .form-container
-        form(action=`/board/${routes.upload}`, method="post")
+        form(action=`/board/${routes.upload}`, method="post", enctype="multipart/form-data")
+            .fileUpload    
+                label(for="picture") Image
+                input(type="file",id="picture",name="picture",accept="image/*")
             input(type="text", placeholder="title",name="title")
             textarea(name="description", placeholder="Description")
             input(type="submit", value="upload")
