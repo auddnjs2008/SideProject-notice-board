@@ -46,3 +46,13 @@ textarea {
   width: 300px;
   margin-bottom: 10px;
 }
+
+.form-container {
+  form {
+    .fileUpload {
+      input:hover {
+        background-color: $black;
+      }
+    }
+  }
+}

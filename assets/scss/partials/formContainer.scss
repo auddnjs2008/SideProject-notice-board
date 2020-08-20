@@ -1,11 +1,25 @@
 .form-container {
-  width: 100%;
+  width: 60vw;
+  height: 60vh;
+  padding: 20px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: $black;
+  border: 10px solid $tree;
+  color: white;
   form {
+    width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    input,
+    textarea {
+      background-color: $black;
+      border: 1px solid white;
+      color: white;
+    }
     input:not(last-child) {
       margin-bottom: 5px;
       &:hover {
