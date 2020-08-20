@@ -2,8 +2,12 @@
 @import "main.scss";
 @import "./partials/header.scss";
 @import "./partials/footer.scss";
+@import "./partials/formContainer.scss";
 @import "./pages/home.scss";
 @import "./pages/postDetail.scss";
+@import "./pages/upload.scss";
+@import "./pages/userDetail.scss";
+
 body {
   background-color: white;
 }

@@ -1,0 +1,16 @@
+.upload {
+  height: 100%;
+  form {
+    width: 80%;
+    height: 80%;
+    textarea {
+      height: 300px;
+      margin-bottom: 10px;
+    }
+    .fileUpload {
+      input:hover {
+        background-color: white;
+      }
+    }
+  }
+}

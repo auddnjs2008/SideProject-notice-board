@@ -11,6 +11,7 @@ import MongoStore from "connect-mongo";
 import userRouter from "./router/userRouter";
 import globalRouter from "./router/globalRouter";
 import boardRouter from "./router/boardRouter";
+import apiRouter from "./router/apiRouter";
 import routes from "./routes";
 import "./passport";
 import { localMiddleware } from "./middleware";
@@ -55,5 +56,6 @@ app.use(localMiddleware);
 app.use(routes.home, globalRouter);
 app.use(routes.users, userRouter);
 app.use(routes.board, boardRouter);
+app.use(routes.api, apiRouter);
 
 export default app;

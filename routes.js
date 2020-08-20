@@ -32,6 +32,12 @@ const GITHUB_CALLBACK = "/auth/github/callback";
 const NAVER = "/auth/naver";
 const NAVER_CALLBACK = "/auth/naver/callback";
 
+//API
+
+const API = "/api";
+const ADD_COMMENT = "/:id/comment";
+const DEL_COMMENT = "/:id/comment/del";
+
 const routes = {
   home: Home,
   join: JOIN,
@@ -77,6 +83,9 @@ const routes = {
   githubcallback: GITHUB_CALLBACK,
   naver: NAVER,
   navercallback: NAVER_CALLBACK,
+  api: API,
+  addComment: ADD_COMMENT,
+  delComment: DEL_COMMENT,
 };
 
 export default routes;

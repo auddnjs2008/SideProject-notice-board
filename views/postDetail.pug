@@ -4,10 +4,14 @@ block content
     .board-container
         .post-wrapper
             .post-magnet
-            .post-name=post.name
-            .post-title=post.title
-                if(post.imageUrl)
-                    img(src=post.imageUrl)
+            .post-name    
+                span.name__who 작성자
+                span=post.name
+            .post-title    
+                span.title__title 제목
+                span=post.title
+            if(post.imageUrl)
+                img(src=post.imageUrl)
             .post-content=post.description
             if(loggedUser && loggedUser.id===post.userId)    
                 .button-wrapper
@@ -17,3 +21,14 @@ block content
                         button.deletePost   Delete
         .post-Comments
             .Comment__header Comments
+            .Comment__replies
+                ul.replies__wrapperBox
+                    each comment in post.comments.reverse()
+                        if(loggedUser && String(comment.creator) === loggedUser.id)
+                            .comment-wrapper
+                                li=comment.text
+                                button(value=comment._id) ❌
+                        else
+                            li=comment.text      
+            form.commentForm
+                input(type="text",placeholder="Please Comments")

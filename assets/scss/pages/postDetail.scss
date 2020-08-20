@@ -1,15 +1,18 @@
 .board-container {
   background-color: $boardColor;
-  width: 100%;
-  height: 150%;
+  border: 10px solid $border;
+  margin: 0 auto;
+  width: 80%;
+  height: 80%;
   padding: 20px;
   display: grid;
-  grid-template-columns: 5fr 1fr 5fr;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
   .post-wrapper {
     position: relative;
     background-color: $postColor;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -24,10 +27,48 @@
       border-radius: 50%;
       background-color: $magnet;
     }
+    .post-name {
+      .name__who {
+        font-weight: 700;
+        margin-right: 20px;
+        color: $blue;
+        font-size: 20px;
+      }
+    }
+    .post-title {
+      .title__title {
+        font-weight: 700;
+        margin-right: 30px;
+        color: $blue;
+        font-size: 20px;
+      }
+    }
+    img {
+      width: auto;
+      height: auto;
+      max-width: 300px;
+      max-height: 300px;
+      margin-bottom: 10px;
+    }
     .button-wrapper {
       width: 100%;
       display: flex;
       justify-content: center;
+      margin-top: 10px;
+      button {
+        border: none;
+        outline-style: none;
+        background-color: $postColor;
+        width: 50px;
+        height: 40px;
+        border-radius: 30%;
+        color: $red;
+        font-weight: 700;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
       a:first-child {
         margin-right: 10px;
       }

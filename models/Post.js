@@ -13,6 +13,12 @@ const PostSchema = new mongoose.Schema({
   time: String,
   userId: String,
   imageUrl: String,
+  comments: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Comment",
+    },
+  ],
 });
 
 const model = mongoose.model("Post", PostSchema);

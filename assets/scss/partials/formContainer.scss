@@ -1,0 +1,51 @@
+.form-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  form {
+    display: flex;
+    flex-direction: column;
+    input:not(last-child) {
+      margin-bottom: 5px;
+      &:hover {
+        background-color: $postColor;
+      }
+    }
+  }
+  .socialLogin {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    button {
+      width: 100%;
+      height: 30px;
+      border: none;
+      &:not(last-child) {
+        margin-bottom: 5px;
+      }
+      &.github-login {
+        background-color: $github;
+        a {
+          color: white;
+        }
+      }
+      &.naver-login {
+        background-color: $naver;
+
+        a {
+          color: white;
+          span:first-child {
+            display: inline-block;
+            width: 13px;
+            height: 13px;
+            margin-right: 2px;
+            color: white;
+            font-weight: 700;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}
