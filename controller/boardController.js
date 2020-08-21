@@ -10,22 +10,33 @@ export const postUpload = async (req, res) => {
     body: { title, description },
     file,
   } = req;
-  console.log(file.path);
-  const day = new Date();
-  const time = `${day.getFullYear()}-${
-    day.getMonth() + 1
-  }-${day.getDate()}(${day.getHours()}:${day.getMinutes()})`;
+  try {
+    const day = new Date();
+    const time = `${day.getFullYear()}-${
+      day.getMonth() + 1 < 10
+        ? `0${day.getMonth() + 1}`
+        : `${day.getMonth() + 1}`
+    }-${day.getDate() < 10 ? `0${day.getDate()}` : `${day.getDate()}`}(${
+      day.getHours() < 10 ? `0${day.getHours()}` : `${day.getHours()}`
+    }:${
+      day.getMinutes() < 10 ? `0${day.getMinutes()}` : `${day.getMinutes()}`
+    })`;
 
-  const newPost = await Post.create({
-    title,
-    description,
-    time,
-    name: req.user.name,
-    userId: req.user.id,
-    imageUrl: file ? file.path : "",
-  });
+    const newPost = await Post.create({
+      title,
+      description,
+      time,
+      name: req.user.name,
+      userId: req.user.id,
+      imageUrl: file ? file.path : "",
+    });
 
-  res.redirect(routes.postDetail(newPost.id));
+    res.redirect(routes.postDetail(newPost.id));
+  } catch (error) {
+    console.log(error);
+    res.status(400);
+    res.redirect(`/board${routes.upload}`);
+  }
 };
 
 export const getEditPost = async (req, res) => {

@@ -1,0 +1,30 @@
+.footerIcon-wrapper {
+  width: 70px;
+  position: absolute;
+  top: 0;
+  left: 50px;
+  transform: translateY(100%);
+  .footer__icon {
+    position: relative;
+    width: 70px;
+
+    img {
+      width: auto;
+      height: auto;
+      max-width: 70px;
+      max-height: 70px;
+    }
+    a {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 15px;
+      padding: 5px;
+      transform: translate(100%, -20%);
+      border: 1px solid black;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+  }
+}

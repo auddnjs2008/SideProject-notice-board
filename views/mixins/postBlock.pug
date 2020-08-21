@@ -2,8 +2,8 @@ mixin postBlock(post = {})
     .postBlock
         .postWrapper
             span.postWrapper__name
-                a(href=routes.postDetail(post.id))=post.name 
+                a(href=routes.userDetail(post.user))=post.name 
             span.postWrapper__title
                 a(href=routes.postDetail(post.id))=post.title 
-            span.postWRapper_time
+            span.postWrapper__time
                 a(href=routes.postDetail(post.id))=post.time    

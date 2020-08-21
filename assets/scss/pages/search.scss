@@ -1,0 +1,55 @@
+.search__header {
+  width: 100%;
+  h3 {
+    text-align: center;
+  }
+}
+
+.search__postes {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .search__Index {
+    width: 50%;
+    padding: 20px;
+    color: $red;
+    font-weight: 700;
+    font-size: 20px;
+    padding-bottom: 0px;
+    background-color: $boardColor;
+    display: grid;
+    grid-template-columns: 1fr 5fr 2fr;
+    gap: 20px;
+    border: 10px solid $border;
+    border-bottom: none;
+  }
+
+  .postBlock {
+    width: 50%;
+    background-color: $boardColor;
+    border-left: 10px solid $border;
+    border-right: 10px solid $border;
+    &:last-child {
+      border-bottom: 10px solid $border;
+    }
+    padding: 20px;
+    .postWrapper {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 5fr 2fr;
+      align-items: center;
+      gap: 20px;
+      .postWrapper__time {
+        font-size: 15px;
+      }
+      span {
+        a {
+          color: white;
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,7 @@
 import axios from "axios";
 const wrapperBox = document.querySelector(".replies__wrapperBox");
-const commentWrapper = wrapperBox.querySelectorAll(".comment-wrapper");
+const commentWrapper =
+  wrapperBox && wrapperBox.querySelectorAll(".comment-wrapper");
 
 const delComment = (target) => {
   wrapperBox.removeChild(target);
@@ -27,10 +28,11 @@ const handleDelete = (e) => {
 };
 
 const init = () => {
-  commentWrapper.forEach((comment) => {
-    const delBtn = comment.querySelector("button");
-    delBtn.addEventListener("click", handleDelete);
-  });
+  if (commentWrapper)
+    commentWrapper.forEach((comment) => {
+      const delBtn = comment.querySelector("button");
+      delBtn.addEventListener("click", handleDelete);
+    });
 };
 
 init();

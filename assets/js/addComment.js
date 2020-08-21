@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const form = document.querySelector(".commentForm");
-const input = form.querySelector("input");
+const input = document.querySelector(".commentInput");
 const commentBox = document.querySelector(".Comment__replies");
 
 const handleSubmit = (event) => {
@@ -41,7 +41,7 @@ const postAxios = async (comment) => {
 };
 
 const init = () => {
-  form.addEventListener("submit", handleSubmit);
+  if (form) form.addEventListener("submit", handleSubmit);
 };
 
 init();

@@ -1,7 +1,7 @@
 html,
 body {
   font-family: "Kalam", cursive;
-  height: 100vh;
+  height: 100%;
   margin: 0px;
 }
 main {
@@ -55,4 +55,9 @@ textarea {
       }
     }
   }
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: white;
 }
