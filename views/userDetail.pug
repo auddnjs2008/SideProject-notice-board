@@ -2,8 +2,8 @@ extends layouts/main.pug
 
 block content
     .profileDetail
-        .name=loggedUser.name
-        img.userImg(src=loggedUser.avatarUrl)
-        if(loggedUser.id === showUser.id)
+        .name=user.name
+        img.userImg(src=user.avatarUrl)
+        if(user.id === showUser.id)
             a(href=`/users${routes.editProfile}`)
                 button.editProfile editProfile

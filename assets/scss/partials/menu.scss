@@ -28,3 +28,10 @@
     }
   }
 }
+
+@media (max-width: 650px) {
+  .footerIcon-wrapper {
+    top: -10px;
+    left: 10px;
+  }
+}

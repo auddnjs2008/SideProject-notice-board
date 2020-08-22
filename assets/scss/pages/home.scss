@@ -69,3 +69,20 @@
     }
   }
 }
+
+@media (max-width: 650px) {
+  .home-post {
+    .postIndex {
+      font-size: 15px;
+    }
+    .postBlock {
+      font-size: 13px;
+      .postWrapper {
+        gap: 10px;
+        .postWrapper__time {
+          font-size: 10px;
+        }
+      }
+    }
+  }
+}

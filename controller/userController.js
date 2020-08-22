@@ -43,7 +43,16 @@ export const postChangePassword = async (req, res) => {
   }
 };
 
-export const userDetail = (req, res) => {
-  const showUser = req.user;
-  res.render("userDetail", { pageTitle: "User-Detail", showUser });
+export const userDetail = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+  try {
+    const user = await User.findById(id);
+    const showUser = req.user;
+    if (req.user === undefined) throw Error();
+    res.render("userDetail", { pageTitle: "User-Detail", showUser, user });
+  } catch (error) {
+    res.redirect(routes.home);
+  }
 };

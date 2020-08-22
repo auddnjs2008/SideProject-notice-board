@@ -34,3 +34,35 @@
     }
   }
 }
+
+@media (max-width: 650px) {
+  .header {
+    grid-template-columns: 1fr 6fr 4fr;
+    gap: 5px;
+    padding: 10px;
+    input {
+      width: 150px;
+    }
+    .header__column {
+      i {
+        font-size: 25px;
+      }
+    }
+    .header__column:last-child {
+      ul {
+        li {
+          margin-right: 5px;
+          font-size: 13px;
+        }
+        .logout {
+          a {
+            width: 100%;
+          }
+        }
+        .join {
+          margin-left: 0px;
+        }
+      }
+    }
+  }
+}

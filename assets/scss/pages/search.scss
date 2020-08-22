@@ -53,3 +53,25 @@
     }
   }
 }
+
+@media (max-width: 650px) {
+  .search__postes {
+    .search__Index {
+      width: 80%;
+      grid-template-columns: repeat(3, 1fr);
+      font-size: 17px;
+    }
+    .postBlock {
+      width: 80%;
+      .postWrapper {
+        span {
+          display: block;
+          min-width: 50px;
+        }
+        .postWrapper__time {
+          font-size: 10px;
+        }
+      }
+    }
+  }
+}
