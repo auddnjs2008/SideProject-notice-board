@@ -37,6 +37,7 @@
   }
   .postPages {
     width: 100%;
+    margin-top: 20px;
     .Pages {
       padding: 0;
       width: 100%;
@@ -60,7 +61,7 @@
       .nowPage {
         a {
           button {
-            font-size: 30px;
+            font-size: 20px;
             color: #ea6569;
             background-color: $boardColor;
           }
@@ -68,9 +69,25 @@
       }
     }
   }
+  .moveButton {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    button {
+      border: none;
+      outline: none;
+      background-color: $boardColor;
+      a {
+        color: white;
+      }
+    }
+  }
 }
 
-@media (max-width: 650px) {
+@media (max-width: 700px) {
   .home-post {
     .postIndex {
       font-size: 15px;

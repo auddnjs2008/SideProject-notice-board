@@ -5,25 +5,62 @@ import passport from "passport";
 
 export const home = async (req, res) => {
   const {
-    query: { page },
+    query: { page, right },
   } = req;
-
   let pageIndex; // 현재페이지를 의미
+  let startIndex; // Index에 표시될  startpage
   try {
     if (page === undefined || page === 1) {
       pageIndex = 1;
     } else {
       pageIndex = parseInt(page);
     }
+
     const postes = await Post.find({}).sort({ _id: -1 });
     const pagesNumber = Math.floor(postes.length / 5);
     const lastPage = postes.length % 5 ? pagesNumber + 1 : pagesNumber;
-    const showPostes = await Post.find({})
-      .sort({ _id: -1 })
-      .skip((pageIndex - 1) * 5)
-      .limit(5);
 
-    res.render("home", { pageTitle: "Home", showPostes, lastPage, pageIndex });
+    // 화살표를 눌렀을 때  5개 건너뛰기 조건문
+    //만약 1페이지 부터 5페이지면 startIndex 는 0
+    // 6페이지부터 10페이지면 startIndex 는 1 이런식
+    const Possible =
+      Math.floor((pageIndex - 1) / 5) < Math.floor((lastPage - 1) / 5);
+
+    const leftPossible = Math.floor((pageIndex - 1) / 5) > 0;
+
+    if (right === "true" && Possible) {
+      startIndex = (Math.floor((pageIndex - 1) / 5) + 1) * 5;
+    } else if (right === "true" && !Possible) {
+      startIndex = 0;
+    } else if (right === "false" && leftPossible) {
+      startIndex = (Math.floor((pageIndex - 1) / 5) - 1) * 5;
+    } else if (right === "false" && !leftPossible) {
+      startIndex = 0;
+    } else {
+      // 화살표를 누르지 않았을 떄 일반
+      startIndex = Math.floor((pageIndex - 1) / 5) * 5;
+    }
+
+    const finishIndex = startIndex + 5;
+    const showPostes =
+      right === undefined
+        ? await Post.find({})
+            .sort({ _id: -1 })
+            .skip((pageIndex - 1) * 5)
+            .limit(5)
+        : await Post.find({})
+            .sort({ _id: -1 })
+            .skip(startIndex * 5)
+            .limit(5);
+
+    res.render("home", {
+      pageTitle: "Home",
+      showPostes,
+      lastPage,
+      pageIndex: right === undefined ? pageIndex : startIndex + 1,
+      startIndex,
+      finishIndex,
+    });
   } catch (error) {
     console.log(error);
     res.render("home", { pageTitle: "Home", postes: [] });

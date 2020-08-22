@@ -18,7 +18,7 @@ block content
             })
         .postPages
             ul.Pages
-                -for(let i =0; i<lastPage; i++)
+                -for(let i =startIndex; i<finishIndex; i++)
                     if(i+1 === pageIndex)
                         li.nowPage
                             a(href=`${routes.home}?page=${i+1}`)
@@ -27,4 +27,10 @@ block content
                         li.page
                             a(href=`${routes.home}?page=${i+1}`)
                                 button=i+1        
-
+            .moveButton
+                button.right
+                    a(href=`${routes.home}?page=${pageIndex}&&right=false`)  
+                        <i class="fas fa-arrow-left"></i>        
+                button.left
+                    a(href=`${routes.home}?page=${pageIndex}&&right=true`)
+                        <i class="fas fa-arrow-right"></i>

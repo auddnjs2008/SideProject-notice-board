@@ -5,16 +5,21 @@ include mixins/postBlock
 block content
     .search__header
         h3  Searching by #{searchingBy}
-    .search__postes
-        .search__Index
-            span.who 작성자
-            span.title 제목
-            span.time 작성시간
-        each post in findPostes
-            +postBlock({
-                id:post.id,
-                user:post.userId,
-                name:post.name,
-                title:post.title,
-                time:post.time
-            })    
+    
+    
+    if(findPostes.length)
+        .search__postes
+            .search__Index
+                span.who 작성자
+                span.title 제목
+                span.time 작성시간
+            each post in findPostes
+                +postBlock({
+                    id:post.id,
+                    user:post.userId,
+                    name:post.name,
+                    title:post.title,
+                    time:post.time
+                })
+    else
+        h1.notMessage Not Found    
