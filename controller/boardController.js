@@ -1,7 +1,7 @@
 import routes from "../routes";
 import Post from "../models/Post";
+import User from "../models/User";
 import Comment from "../models/Comment";
-
 export const getUpload = (req, res) =>
   res.render("upload", { pageTitle: "Upload" });
 
@@ -30,6 +30,10 @@ export const postUpload = async (req, res) => {
       userId: req.user.id,
       imageUrl: file ? file.path : "",
     });
+
+    const uploader = await User.findById(req.user.id);
+    uploader.postes.push(newPost.id);
+    uploader.save();
 
     res.redirect(routes.postDetail(newPost.id));
   } catch (error) {
@@ -98,7 +102,9 @@ export const postAddCommet = async (req, res) => {
     body: { comment },
     user,
   } = req;
+
   try {
+    if (user === undefined) throw Error();
     const post = await Post.findById(id);
     const newComment = await Comment.create({
       text: comment,
@@ -106,6 +112,7 @@ export const postAddCommet = async (req, res) => {
     });
     post.comments.push(newComment.id);
     post.save();
+    res.redirect(routes.home);
   } catch (error) {
     console.log(error);
     res.status(400);

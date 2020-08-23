@@ -75,6 +75,7 @@ export const postJoin = async (req, res, next) => {
   } = req;
 
   if (password !== password2) {
+    req.flash("error", "Passwords don't match");
     res.status(400);
     res.render("join", { pageTitle: "Join" });
   } else {
@@ -95,6 +96,8 @@ export const getLogin = (req, res) =>
 export const postLogin = passport.authenticate("local", {
   successRedirect: routes.home,
   failureRedirect: routes.login,
+  successFlash: "Welcome",
+  failureFlash: "Can't log in. Check email and/or Password",
 });
 
 export const githubLogin = passport.authenticate("github", {
@@ -122,7 +125,7 @@ export const githubLoginCallback = async (_, __, profile, cb) => {
     });
     return cb(null, newUser);
   } catch (error) {
-    return cb(error);
+    return cb(error, false);
   }
 };
 
@@ -166,6 +169,7 @@ export const postNaverLogin = (req, res) => {
 
 export const logout = (req, res) => {
   req.logout();
+  req.flash("info", "Goodbye see you later");
   res.redirect(routes.home);
 };
 

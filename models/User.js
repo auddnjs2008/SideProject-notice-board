@@ -7,6 +7,12 @@ const userSchema = new mongoose.Schema({
   avatarUrl: String,
   githubId: Number,
   NaverId: Number,
+  postes: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Postes",
+    },
+  ],
 });
 
 //passportLocalMongoose 적용함

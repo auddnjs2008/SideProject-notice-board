@@ -27,7 +27,6 @@ const addComment = async (comment) => {
 
 const postAxios = async (comment) => {
   const id = window.location.href.split("board/")[1];
-  console.log(id);
   const sendmessage = await axios({
     method: "post",
     url: `/api/${id}/comment`,

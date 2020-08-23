@@ -7,7 +7,7 @@ import passport from "passport";
 import session from "express-session";
 import mongoose from "mongoose";
 import MongoStore from "connect-mongo";
-
+import flash from "express-flash";
 import userRouter from "./router/userRouter";
 import globalRouter from "./router/globalRouter";
 import boardRouter from "./router/boardRouter";
@@ -40,6 +40,7 @@ app.use(cookieParser());
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("dev"));
+
 app.use(
   session({
     secret: process.env.COOKIE_SECRET,
@@ -48,6 +49,7 @@ app.use(
     store: new CokieStore({ mongooseConnection: mongoose.connection }),
   })
 );
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 

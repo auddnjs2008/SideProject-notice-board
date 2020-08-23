@@ -23,7 +23,7 @@ block content
             .Comment__header Comments
             .Comment__replies
                 ul.replies__wrapperBox
-                    each comment in post.comments.reverse()
+                    each comment in post.comments
                         if(loggedUser && String(comment.creator) === loggedUser.id)
                             .comment-wrapper
                                 li=comment.text

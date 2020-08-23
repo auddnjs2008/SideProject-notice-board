@@ -22,9 +22,9 @@
     }
     input:not(last-child) {
       margin-bottom: 5px;
-      &:hover {
-        background-color: $postColor;
-      }
+      // &:focus {
+      //   background-color: $postColor;
+      // }
     }
   }
   .socialLogin {

@@ -1,3 +1,5 @@
+include ../mixins/message
+
 
 doctype html
 html
@@ -8,6 +10,21 @@ html
         link(rel="stylesheet",href="/static/styles.css")
         <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
     body
+        if messages.error
+            +message({
+                type:"error",
+                text:messages.error
+            })    
+        else if messages.info
+            +message({
+                type:"info",
+                text:messages.info
+            })
+        else if messages.success
+            +message({
+                type:"success",
+                text:messages.success
+            })
         include ../partials/header
         main
             block content 

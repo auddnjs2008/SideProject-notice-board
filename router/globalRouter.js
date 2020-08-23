@@ -30,7 +30,11 @@ globalRouter.get(routes.github, githubLogin);
 
 globalRouter.get(
   routes.githubcallback,
-  passport.authenticate("github", { failureRedirect: "/login" }),
+  passport.authenticate("github", {
+    failureRedirect: "/login",
+    failureFlash: "Can't log in. Check email and/or Password",
+    successFlash: "Welcome",
+  }),
   postGithubLogin
 );
 
@@ -40,6 +44,8 @@ globalRouter.get(
   routes.navercallback,
   passport.authenticate("naver", {
     failureRedirect: "/login",
+    failureFlash: "Can't log in. Check email and/or Password",
+    successFlash: "Welcome",
   }),
   postNaverLogin
 );
