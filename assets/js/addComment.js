@@ -4,6 +4,9 @@ const form = document.querySelector(".commentForm");
 const input = document.querySelector(".commentInput");
 const commentBox = document.querySelector(".Comment__replies");
 
+const commentForm = document.querySelector(".commentForm");
+const User = document.querySelector(".logout");
+
 const handleSubmit = (event) => {
   event.preventDefault();
   const comment = input.value;
@@ -41,6 +44,10 @@ const postAxios = async (comment) => {
 
 const init = () => {
   if (form) form.addEventListener("submit", handleSubmit);
+
+  if (commentForm && !User) {
+    commentForm.style.display = "none";
+  }
 };
 
 init();

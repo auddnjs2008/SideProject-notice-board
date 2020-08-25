@@ -63,11 +63,17 @@ export const userDetail = async (req, res) => {
     params: { id },
   } = req;
   try {
-    const user = await User.findById(id);
+    const user = await User.findById(id).populate("postes");
     const showUser = req.user;
     if (req.user === undefined) throw Error();
-    res.render("userDetail", { pageTitle: "User-Detail", showUser, user });
+    res.render("userDetail", {
+      pageTitle: "User-Detail",
+      showUser,
+      user,
+      postes: user.postes,
+    });
   } catch (error) {
+    console.log(error);
     req.flash("error", "User not found");
     res.redirect(routes.home);
   }

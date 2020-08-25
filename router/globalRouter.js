@@ -13,6 +13,7 @@ import {
   postGithubLogin,
   naverLogin,
   postNaverLogin,
+  chat,
 } from "../controller/globalController";
 import passport from "passport";
 import { onlySecret } from "../middleware";
@@ -52,5 +53,7 @@ globalRouter.get(
 
 globalRouter.get(routes.logout, onlySecret, logout);
 globalRouter.get(routes.search, search);
+
+globalRouter.get(routes.chat, chat);
 
 export default globalRouter;

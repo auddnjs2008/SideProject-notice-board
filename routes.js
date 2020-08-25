@@ -38,6 +38,9 @@ const API = "/api";
 const ADD_COMMENT = "/:id/comment";
 const DEL_COMMENT = "/:id/comment/del";
 
+//Chat
+
+const CHAT = "/chat";
 const routes = {
   home: Home,
   join: JOIN,
@@ -86,6 +89,7 @@ const routes = {
   api: API,
   addComment: ADD_COMMENT,
   delComment: DEL_COMMENT,
+  chat: CHAT,
 };
 
 export default routes;

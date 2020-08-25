@@ -182,3 +182,7 @@ export const search = async (req, res) => {
   const findPostes = postes.filter((post) => post.title.includes(searchingBy));
   res.render("search", { pageTitle: "Search", searchingBy, findPostes });
 };
+
+export const chat = (req, res) => {
+  res.render("chat");
+};

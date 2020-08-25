@@ -1,4 +1,5 @@
 .footerIcon-wrapper {
+  margin-top: 10px;
   width: 70px;
   position: absolute;
   top: 0;
@@ -14,19 +15,48 @@
       max-width: 70px;
       max-height: 70px;
     }
-    a {
+
+    @keyframes widthMove {
+      0% {
+        width: 45px;
+      }
+      50% {
+        width: 113px;
+      }
+      100% {
+        width: 211px;
+      }
+    }
+    .menu {
+      cursor: pointer;
       position: absolute;
       top: 0;
       right: 0;
       font-size: 15px;
       padding: 5px;
       transform: translate(100%, -20%);
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: max-content;
+      gap: 50px;
       border: 1px solid black;
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
       border-bottom-right-radius: 10px;
+
+      &:hover {
+        animation: widthMove 0.3s linear;
+        background-color: $red;
+        color: white;
+        a {
+          color: white;
+        }
+      }
     }
   }
+}
+.none {
+  display: none;
 }
 
 @media (max-width: 650px) {

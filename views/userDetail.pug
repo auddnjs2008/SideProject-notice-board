@@ -7,3 +7,11 @@ block content
         if(user.id === showUser.id)
             a(href=`/users${routes.editProfile}`)
                 button.editProfile editProfile
+        .wrapper__title 게시글
+        .posted-wrapper
+            span 제목
+            span 작성시간
+            each post in postes
+                a(href=`${routes.postDetail(post.id)}`)
+                    .posted__title=post.title
+                .posted__time= post.time

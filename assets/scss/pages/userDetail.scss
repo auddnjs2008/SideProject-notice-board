@@ -12,4 +12,43 @@
     border-radius: 50%;
     margin-bottom: 10px;
   }
+  .wrapper__title {
+    margin: 20px 0px;
+    font-size: 30px;
+    font-weight: 700;
+    color: $blue;
+  }
+  .posted-wrapper {
+    padding: 20px;
+    margin-bottom: 90px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 50px;
+    width: 70%;
+    max-height: 350px;
+    overflow: auto;
+    justify-items: center;
+    background-color: $black;
+    border: 5px solid $tree;
+    color: white;
+
+    &::-webkit-scrollbar {
+      background-color: white;
+    }
+    &::-webkit-scrollbar-thumb {
+      height: 20px;
+      background-color: $blue;
+    }
+
+    span {
+      font-size: 20px;
+      color: $yellow;
+    }
+    a {
+      color: white;
+    }
+    .posted__time {
+      font-size: 13px;
+    }
+  }
 }
