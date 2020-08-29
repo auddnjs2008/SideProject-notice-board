@@ -1,1 +1,11 @@
- 
+extends layouts/main.pug
+
+block content
+    if !loggedUser
+        h1 You should Login 
+    else
+        .chatBox
+            .chatBox__content
+                ul
+            form.chatForm
+                input(placeholder="Write a message" , type="text")

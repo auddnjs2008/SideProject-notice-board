@@ -90,8 +90,9 @@ export const postJoin = async (req, res, next) => {
   }
 };
 
-export const getLogin = (req, res) =>
+export const getLogin = (req, res) => {
   res.render("login", { pageTitle: "Login" });
+};
 
 export const postLogin = passport.authenticate("local", {
   successRedirect: routes.home,
