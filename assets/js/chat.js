@@ -25,8 +25,8 @@ const addchatMessage = (text, name, avatarUrl) => {
     </div>
     <div class="message">${text} </div>
   </div>`
-      : `<div class="profile">
-  <div class="message">${text} </div>
+      : `<div class="myProfile">
+  <div class="myMessage">${text} </div>
   </div>`;
   ul.appendChild(li);
 };
