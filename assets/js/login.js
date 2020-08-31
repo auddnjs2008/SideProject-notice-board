@@ -1,4 +1,5 @@
-const { initSockets } = require("./chat");
+import { initSockets } from "./socket";
+import { getSocket } from "./socket";
 
 const header = document.querySelector(".header__column");
 const LogIn = document.querySelector(".logout");
@@ -13,13 +14,25 @@ const alarmLogin = (message) => {
   if (ul) ul.appendChild(li);
 };
 
-const handleNewUser = ({ message }) => {
+export const handleNewUser = ({ message, sockets }) => {
+  console.log(sockets);
   alarmLogin(message);
+};
+
+export const handleUserUpdate = ({ sockets }) => {
+  console.log("*******");
+  console.log(sockets);
 };
 
 if (LogIn) {
   const socket = io("/");
-  socket.emit("newUser");
-  initSockets(socket);
-  socket.on("newUser", handleNewUser);
+  socket.on("connect", () => {
+    if (
+      localStorage.getItem("id") === "" ||
+      localStorage.getItem("id") === null
+    )
+      localStorage.setItem("id", socket.id);
+    socket.emit("newUser", { id: socket.id });
+    initSockets(socket);
+  });
 }
