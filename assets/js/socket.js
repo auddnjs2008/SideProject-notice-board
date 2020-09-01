@@ -10,5 +10,5 @@ export const initSockets = (aSocket) => {
   socket.on("newMessage", handleNewMessage);
   socket.on("newUser", handleNewUser);
   socket.on("chatUserUpdate", handleUserUpdate);
-  socket.on("disconnected", handleDisconnect);
+  //socket.on("disconnected", handleDisconnect);
 };

@@ -25,6 +25,7 @@ app.set("view engine", "pug");
 app.use(helmet());
 app.use("/users/uploads", express.static("uploads"));
 app.use("/board/uploads", express.static("uploads"));
+app.use("/chat/uploads", express.static("uploads"));
 app.use("/static", express.static("static"));
 
 app.use(function (req, res, next) {

@@ -4,8 +4,12 @@ block content
     if !loggedUser
         h1 You should Login 
     else
-        .chatBox
-            .chatBox__content
-                ul
-            form.chatForm
-                input(placeholder="Write a message" , type="text")
+        .chat
+            .chatUser
+                .chatUser__title  Log In User
+                    ul
+            .chatBox
+                .chatBox__content
+                    ul
+                form.chatForm
+                    input(placeholder="Write a message" , type="text")

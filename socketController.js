@@ -26,22 +26,26 @@ const socketController = async (socket, io) => {
       socket.handshake.session.userdata = id;
       socket.handshake.session.save();
     }
+    console.log(sockets);
     const socketId = socket.handshake.session.userdata;
-    if (sockets.find((socket) => socket.id === socketId) === undefined)
+    if (sockets.filter((aSocket) => aSocket.id === socketId).length === 0) {
       sockets.push({
-        id: socket.handshake.session.userdata,
+        id: socketId,
         name: user.name,
         avatarUrl: user.avatarUrl,
       });
-    superbroadcast("newUser", {
-      message: `${user.name} entered in chat room `,
-      sockets,
-    });
+      superbroadcast("newUser", {
+        message: `${user.name} entered in chat room `,
+        sockets,
+      });
+    }
   });
 
-  socket.on("disconnect", () => {
-    sockets = sockets.filter((aSocket) => aSocket.id !== socket.id);
-    broadcast("disconnected", { id: socket.id });
+  socket.on("logOut", () => {
+    console.log("끊겼다");
+    sockets = sockets.filter(
+      (aSocket) => aSocket.id !== socket.handshake.session.userdata
+    );
     sendPlayerUpdate();
   });
 };
