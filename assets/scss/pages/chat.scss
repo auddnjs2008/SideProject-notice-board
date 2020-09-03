@@ -1,16 +1,24 @@
 .chat {
   display: grid;
-  grid-template-columns: 100px 3fr;
+  grid-template-columns: 100px 1fr;
+  //transform: translateX(26%);
+  margin: 0 auto;
+  width: 70%;
   .chatUser {
     width: 100%;
+    height: 70vh;
     padding: 10px;
     border: 1px solid black;
-    height: 100%;
+    overflow: auto;
+
     .chatUser__title {
       width: 100%;
       text-align: center;
+      font-size: 14px;
+      color: $red;
       ul {
         padding: 0px;
+        color: black;
         li {
           .chatUser__profile {
             display: flex;
@@ -38,7 +46,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 80vh;
+    width: 100%;
     height: 70vh;
     border: 1px solid black;
     background-color: $tree;
@@ -47,6 +55,7 @@
       width: 100%;
       height: 90%;
       border: 1px solid black;
+      padding: 5px;
       overflow: auto;
       background-color: $boardColor;
       margin-bottom: 5px;
@@ -62,6 +71,10 @@
         padding-right: 5px;
         li {
           margin-bottom: 7px;
+          .message {
+            color: white;
+            word-wrap: wrap;
+          }
         }
       }
       .chatWrapper {
@@ -82,13 +95,14 @@
           }
         }
         .message {
-          height: 30px;
+          word-break: break-all;
+          height: 100%;
           font-size: 14px;
           color: white;
           padding: 5px;
           background-color: $blue;
           border-top-right-radius: 10px;
-          border-top-left-radius: 10px;
+          border-bottom-left-radius: 10px;
           border-bottom-right-radius: 10px;
         }
       }
@@ -96,10 +110,10 @@
         display: flex;
         justify-content: flex-end;
         .myMessage {
-          height: 30px;
+          height: auto;
           width: -webkit-fit-content;
+          word-break: break-all;
           font-size: 14px;
-
           color: white;
           padding: 5px;
           background-color: $blue;

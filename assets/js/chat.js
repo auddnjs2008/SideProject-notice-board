@@ -5,6 +5,7 @@ const chatBody = document.querySelector(".chatBox__content");
 const chatForm = document.querySelector(".chatForm");
 const Input = chatForm ? chatForm.querySelector("input") : null;
 const ul = chatBody ? chatBody.querySelector("ul") : null;
+const menu = document.querySelector(".footerIcon-wrapper");
 
 const addchatMessage = (text, name, avatarUrl) => {
   const li = document.createElement("li");
@@ -37,7 +38,10 @@ export const handleNewMessage = ({ message, name, avatarUrl }) => {
 };
 
 const init = () => {
-  if (chatForm) chatForm.addEventListener("submit", handleSubmit);
+  if (chatForm) {
+    chatForm.addEventListener("submit", handleSubmit);
+    menu.style.left = "0px";
+  }
 };
 
 init();

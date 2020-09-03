@@ -80,7 +80,11 @@ export const postJoin = async (req, res, next) => {
     res.render("join", { pageTitle: "Join" });
   } else {
     try {
-      const user = await User({ name, email });
+      const user = await User({
+        name,
+        email,
+        avatarUrl: "/uploads/avatar/익명.jpg",
+      });
       await User.register(user, password);
       next();
     } catch (error) {
