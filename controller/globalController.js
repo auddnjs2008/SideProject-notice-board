@@ -189,5 +189,5 @@ export const search = async (req, res) => {
 };
 
 export const chat = (req, res) => {
-  res.render("chat");
+  res.render("chat", { pageTitle: "Chat" });
 };
